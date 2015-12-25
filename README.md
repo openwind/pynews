@@ -1,2 +1,42 @@
-# pynews
-## Hello
+# pynew
+## 环境要求
+ - python 2.7
+ - scrapy 1.0.3
+ - jinja2 2.8    
+
+## 快速开始
+ - git clone 
+ - sudo pip install -r requests.txt
+ - cd pynew/spider
+ - scrapy crawl sinaspider      爬取新浪新闻
+ - scrapy crawl netesespider    爬取网易新闻
+ - scrapy crawl tencentspider    爬取腾讯新闻
+
+## 输出
+-[+]data    
+ | [+]sina    
+ | | [+]comments         所有评论    
+ | | [+]html             html页面    
+ | | [+]interest_news    我们感兴趣的信息    
+ | [+]tencent    
+ | | [+]comments    
+ | | [+]html    
+ | | [+]interest_news    
+ | [+]netese    
+ | | [+]comments    
+ | | [+]html    
+ | | [+]interest_news    
+
+## 我们感兴趣的信息定义
+ - ID             新闻ID
+ - URL            新闻URL
+ - Time           新闻时间
+ - Keyword        新闻关键字
+ - Source         新闻来源
+ - Channel        新闻频道
+ - Total          新闻评论总数
+ - Title          新闻标题
+ - Artical        新闻主体
+ - Comment        评论内容
+ - Html           新闻页面
+
