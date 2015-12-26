@@ -1,0 +1,41 @@
+{
+    "result": {
+        "status": {
+            "msg": "", 
+            "code": 0
+        }, 
+        "count": {
+            "qreply": 0, 
+            "total": 0, 
+            "show": 0
+        }, 
+        "replydict": {}, 
+        "language": "ch", 
+        "encoding": "gbk", 
+        "top": [], 
+        "cmntlist": [], 
+        "cmntlist_wb_verified": [], 
+        "news": {
+            "status": "N_NORMAL", 
+            "anonymous": "A_DEFAULT", 
+            "title": "消息称长江沉船事故调查报告将公布", 
+            "default": "M_DEFAULT", 
+            "channel": "gn", 
+            "show": "M_DEFAULT", 
+            "tagalias": "", 
+            "topic": "", 
+            "column": "comos-56044", 
+            "script": "", 
+            "base": "0", 
+            "url": "http://news.sina.com.cn/c/nd/2015-12-27/doc-ifxmxxst0556400.shtml", 
+            "groups": "", 
+            "time": "2015-12-27 01:39:21", 
+            "newsid": "comos-fxmxxst0556400", 
+            "countmode": "C_HIDE,C_QREPLY,C_SHOW", 
+            "config": "url_wap=http%3A%2F%2Fnews.sina.cn%2Fgn%2F2015-12-27%2Fdetail-ifxmxxst0556400.d.html", 
+            "subnum": "0"
+        }, 
+        "grouplist": [], 
+        "hot_list": []
+    }
+}

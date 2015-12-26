@@ -1,0 +1,30 @@
+.totop{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    /*display:block;*/
+    display:none;
+    width:26px;
+    height:62px;
+    background:url(../img/rocket.png) no-repeat 0 0;
+    -webkit-transition: all 0.2s ease-in-out;
+}
+.totop:hover{
+    background:url(../img/rocket.png) no-repeat 0 -62px;
+}
+#my_content{
+    margin-top: 0px;
+}
+#my_content ol,#my_content ul {
+    padding-left: 15px;
+}
+#navbar {-moz-box-sizing:border-box;box-sizing:border-box;height:41px;padding:0 15px;margin-top:-1px;text-shadow:0 1px 0 #fff;font-size:18;color:#fff}
+.uk-form {
+    padding-top:1em;
+}
+.uk-navbar>div>form {
+    padding-top:0;
+}
+#news {
+    background-color:#f5f5f5;
+}

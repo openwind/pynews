@@ -1,2 +1,4 @@
 *.exvim
 .exvim.*
+result.txt
+*.pyc
