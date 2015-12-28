@@ -39,7 +39,7 @@ def edit_distance(s1, s2):
 
 for word in search_dict.keys():
     relate_dict[word] = edit_distance(keyword, word) / (search_dict[word] + 1.0)
-#print relate_dict
+print relate_dict
 top_list = sorted(relate_dict.iteritems(), key=lambda f:f[1])[:9]
 top_list = [i for (i, j) in top_list]
 
