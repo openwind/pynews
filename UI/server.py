@@ -59,9 +59,17 @@ def signin_form():
 
 @app.route('/news', methods=['POST'])
 def signin():
+    # 用这两个参数进行检索和排序
+    search = request.form['search']
+    sequence = request.form['radio']
+
     env = init_jinja2()
-    arg = get_dict("../spider/data/sina/interest_news/", 20)
-    html = env.get_template('news.html').render(arg).encode('utf-8')
+    if search == "":
+        html = env.get_template('index.html').render().encode('utf-8')
+    else:
+        arg = get_dict("../spider/data/sina/interest_news/", 20)
+        #渲染结果页面
+        html = env.get_template('news.html').render(arg).encode('utf-8')
     return html
     
 if __name__ == '__main__':
