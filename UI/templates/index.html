@@ -24,13 +24,13 @@
         <img class="uk-border-circle" src="/static/img/ucas.jpg" alt="图片加载失败-_-!" width="200" height="200">
         <form class="uk-form" action="/news" method="post">
             <div class="uk-form-row">
-                <input type="text" placeholder="" class="uk-form-width-large uk-form-large" \>
+                <input type="text" name="search" placeholder="" class="uk-form-width-large uk-form-large" \>
                 <button class="uk-button uk-button-primary uk-button-large" type="submit">搜一下</button>
             </div>
             <div class="uk-form-row">
                 <div class="uk-form-controls">
-                    <label><input type="radio" id="hot" name="radio">按照热度</label>
-                    <label><input type="radio" id="time" name="radio" checked="true">按照时间</label>
+                    <label><input type="radio" value="hot" name="radio">按照热度</label>
+                    <label><input type="radio" value="time" name="radio" checked="true">按照时间</label>
                 </div>
             </div>
         </form>
