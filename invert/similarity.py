@@ -4,14 +4,13 @@ import jieba
 import os
 import sys
 import re
+import string
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import CountVectorizer
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-ppath='C:/Users/Administrator/Desktop/pynews-master/spider/data/sina/interest_news'
-que='深圳山体滑坡'
 
 #获取指定路径下所有文件
 def getFiles(path):
@@ -95,8 +94,10 @@ def sortResult(degree):
     degree.sort(key=lambda x:x[1],reverse=True)
     return degree
 
-corpus=cutWord(getFiles(ppath))
-degree=sortResult(query(que,corpus,ppath))
+def sortByTime(arg):
+    arg.sort(key=lambda x:x[3],reverse=True)
+    return arg
 
-for d in degree:
-    print d[0]+'--->'+str(d[1])
+def sortByHot(arg):
+    arg.sort(key=lambda x:string.atoi(x[4]),reverse=True)
+    return arg

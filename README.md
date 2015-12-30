@@ -2,7 +2,11 @@
 ## 环境要求
  - python 2.7
  - scrapy 1.0.3
- - jinja2 2.8    
+ - jinja2 2.8
+ - jieba  0.38
+ - numpy  1.8.2
+ - scipy  0.13.3
+ - sklearn 0.0    
 
 ## 快速开始
  - git clone 
@@ -11,6 +15,9 @@
  - scrapy crawl sinaspider      爬取新浪新闻
  - scrapy crawl netesespider    爬取网易新闻
  - scrapy crawl tencentspider    爬取腾讯新闻
+ - cd pynew/UI
+ - python server.py             运行服务端程序
+ - 打开浏览器输入http://localhost:5000    
 
 ## 输出
 -[+]data    

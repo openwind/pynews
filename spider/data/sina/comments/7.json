@@ -5,88 +5,37 @@
             "code": 0
         }, 
         "count": {
-            "qreply": 10, 
-            "total": 40, 
-            "show": 1
+            "qreply": 0, 
+            "total": 0, 
+            "show": 0
         }, 
         "replydict": {}, 
         "language": "ch", 
         "encoding": "gbk", 
         "top": [], 
-        "cmntlist": [
-            {
-                "status": "M_PASS", 
-                "nick": "良心何在you", 
-                "thread": "", 
-                "parent": "", 
-                "level": "0", 
-                "ip": "112.228.172.244", 
-                "area": "山东临沂", 
-                "mid": "567E9ECC-70E4ACF4-E8DD2031-983-89E", 
-                "against": "10", 
-                "vote": "0", 
-                "content": "広東省書記到来了！！！賛成！！！！！", 
-                "usertype": "", 
-                "length": "36", 
-                "rank": "0", 
-                "time": "2015-12-26 22:06:04", 
-                "newsid": "comos-fxmykrf2403440", 
-                "config": "client_port=0&area=山东临沂&wb_verified=0&wb_screen_name=良心何在you&wb_user_id=3906805809&wb_time=1451138764&wb_profile_img=http%3A%2F%2Ftp2.sinaimg.cn%2F3906805809%2F50%2F5737021041%2F0&area=山东临沂", 
-                "agree": "10", 
-                "channel": "gn", 
-                "uid": "3906805809"
-            }
-        ], 
+        "cmntlist": [], 
         "cmntlist_wb_verified": [], 
         "news": {
             "status": "N_NORMAL", 
             "anonymous": "A_DEFAULT", 
-            "title": "深圳滑坡事故救援现场默哀 广东省委书记献花", 
-            "default": "M_CHECK", 
+            "title": "国台办：两岸热线今天正式启用 完成首次通话", 
+            "default": "M_DEFAULT", 
             "channel": "gn", 
-            "show": "M_PASS,M_NICE", 
+            "show": "M_DEFAULT", 
             "tagalias": "", 
             "topic": "", 
-            "column": "comos-56044", 
+            "column": "comos-51922", 
             "script": "", 
             "base": "0", 
-            "url": "http://news.sina.com.cn/c/nd/2015-12-26/doc-ifxmykrf2403440.shtml", 
-            "groups": "gn:1-63-9352", 
-            "time": "2015-12-26 19:59:34", 
-            "newsid": "comos-fxmykrf2403440", 
+            "url": "http://news.sina.com.cn/o/2015-12-30/doc-ifxmxxsp7310867.shtml", 
+            "groups": "", 
+            "time": "2015-12-30 11:23:58", 
+            "newsid": "comos-fxmxxsp7310867", 
             "countmode": "C_HIDE,C_QREPLY,C_SHOW", 
-            "config": "url_wap=http%3A%2F%2Fnews.sina.cn%2Fgn%2F2015-12-26%2Fdetail-ifxmykrf2403440.d.html", 
+            "config": "url_wap=http%3A%2F%2Fnews.sina.cn%2F2015-12-30%2Fdetail-ifxmxxsp7310867.d.html", 
             "subnum": "0"
         }, 
-        "grouplist": [
-            {
-                "count": {
-                    "qreply": 156691, 
-                    "total": 210905, 
-                    "show": 5398
-                }, 
-                "news": {
-                    "status": "N_NORMAL", 
-                    "anonymous": "A_DEFAULT", 
-                    "title": "深圳工业园区发生渣土滑坡事故", 
-                    "default": "M_CHECK", 
-                    "channel": "gn", 
-                    "show": "M_DEFAULT", 
-                    "tagalias": "", 
-                    "topic": "", 
-                    "column": "", 
-                    "script": "", 
-                    "base": "0", 
-                    "url": "http://news.sina.com.cn/c/z/szsthp2015/index.shtml", 
-                    "groups": ",1-63-9352", 
-                    "time": "2015-12-20 13:34:17", 
-                    "newsid": "1-63-9352", 
-                    "countmode": "C_HIDE,C_QREPLY,C_SHOW", 
-                    "config": "", 
-                    "subnum": "235"
-                }
-            }
-        ], 
+        "grouplist": [], 
         "hot_list": []
     }
 }

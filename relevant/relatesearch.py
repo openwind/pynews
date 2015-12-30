@@ -3,16 +3,6 @@
 import json
 import codecs
 
-fin = codecs.open("word", "r", "utf-8")
-search_dict = json.load(fin, encoding='utf-8')
-fin.close()
-
-fin = codecs.open("key_word", "r", "utf-8")
-keyword = json.load(fin, encoding='utf-8')
-fin.close()
-
-relate_dict = {}
-
 def edit_distance(s1, s2):
     m, n = len(s1), len(s2)  
     colsize, v1, v2 = m + 1, [], []  
@@ -36,13 +26,11 @@ def edit_distance(s1, s2):
             v1[j] = v2[j]
     return v2[n]
 
-
-for word in search_dict.keys():
-    relate_dict[word] = edit_distance(keyword, word) / (search_dict[word] + 1.0)
-#print relate_dict
-top_list = sorted(relate_dict.iteritems(), key=lambda f:f[1])[:9]
-top_list = [i for (i, j) in top_list]
-
-fout = codecs.open("result", "w", "utf-8")
-fout.write(json.dumps(top_list, ensure_ascii=False, encoding='utf-8'))
-fout.close()
+def relate_search(search_dict, keyword):
+    relate_dict = {}
+    for word in search_dict:
+        relate_dict[word] = edit_distance(keyword, word)
+    #print relate_dict
+    top_list = sorted(relate_dict.iteritems(), key=lambda f:f[1])[:9]
+    top_list = [i for (i, j) in top_list]
+    return top_list
