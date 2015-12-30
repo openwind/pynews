@@ -1,3 +1,7 @@
 jinja2
 scrapy
 flask
+jieba
+numpy
+scipy
+sklearn

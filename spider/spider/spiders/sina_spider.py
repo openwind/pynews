@@ -32,7 +32,7 @@ class SinaSpider(CrawlSpider):
         item['Html'] = response.xpath("//html").extract()
         item['Source'] = 'sina'
         item['URL'] = response.url
-        item['Time'] = response.url.split('/')[5]
+        item['Time'] = re.findall("[0-9]+\-[0-9]+\-[0-9]+", response.url)[0]
 
         try:
             content_id = response.xpath("//head/meta[@name='comment']/@content").extract()

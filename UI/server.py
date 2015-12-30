@@ -3,16 +3,19 @@
 
 __author__ = 'Genial Wang'
 
+import sys, os,re
+sys.path.append("../")
 from flask import Flask, request
 import logging; logging.basicConfig(level=logging.INFO)
-import sys, os,re
 import json
 from jinja2 import Environment, FileSystemLoader
-reload(sys)
-sys.setdefaultencoding('utf-8')
+from invert.similarity import *
+from relevant.relatesearch import *
 
 app = Flask(__name__)
 
+ppath='../spider/data/sina/interest_news'
+corpus=cutWord(getFiles(ppath))
 def init_jinja2(**kw):
     options = dict(
             autoescape = kw.get('autoescape', False),
@@ -28,24 +31,30 @@ def init_jinja2(**kw):
     env = Environment(loader=FileSystemLoader(path), **options)
     return env
 
-def get_dict(path, num=5):
-    argument = dict()
+def get_list(path):
     index_list = []
-    for i in range(1, num+1):
+    for file_name in path:
         value_list = []
-        file_name = os.path.join(path, str(i)+".json")
         try:
             with open(file_name, "r") as f:
                 load_dict = json.load(f)
             value_list.append(load_dict['Title'])
             value_list.append(load_dict['URL'])
             value_list.append(load_dict['Artical'].strip()[5:400])
+            if load_dict['Time'] == "":
+                value_list.append("0")
+            else:
+                value_list.append(load_dict['Time'])
+                print load_dict['Time'] + "  " + file_name
+            if load_dict['Total'] == "":
+                value_list.append("0")
+            else:
+                value_list.append(load_dict['Total'])
+            print "Time:"+ load_dict['Time'] + "    Total:"+ load_dict['Total']
         except:
             continue
         index_list.append(value_list)
-    argument["files"] = index_list
-
-    return argument
+    return index_list
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -53,26 +62,36 @@ def home():
     html = env.get_template('index.html').render().encode('utf-8')
     return html
 
-@app.route('/signin', methods=['GET'])
-def signin_form():
-    pass
-
-@app.route('/news', methods=['POST'])
-def signin():
+@app.route('/news', methods=['GET', 'POST'])
+def news():
     # 用这两个参数进行检索和排序
-    search = request.form['search']
-    sequence = request.form['radio']
-
+    que = request.form['search']
+    try:
+        sequence = request.form['radio']
+    except:
+        sequence = ""
+    arg = dict()
     env = init_jinja2()
-    if search == "":
+    if que == "":
         html = env.get_template('index.html').render().encode('utf-8')
     else:
-        arg = get_dict("../spider/data/sina/interest_news/", 20)
+        degree=sortResult(query(que,corpus,ppath))
+        filelist = [info[0] for info in degree]
+        argList = get_list(filelist)
+        if sequence == "time":
+            sortByTime(argList)
+        elif sequence == "hot":
+            sortByHot(argList)
+        arg['files'] = argList
+        arg['search'] = que
         #渲染结果页面
         html = env.get_template('news.html').render(arg).encode('utf-8')
     return html
     
+def relative_compute(keyWord):
+    relate_search(corpus, keyWord)
+
 if __name__ == '__main__':
     app.run()
     #print get_dict("../spider/data/sina/interest_news/", 20)
-
+    #relative_compute(u"中华人民共和国")
