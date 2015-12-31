@@ -26,11 +26,20 @@ def edit_distance(s1, s2):
             v1[j] = v2[j]
     return v2[n]
 
-def relate_search(search_dict, keyword):
+def relate_search(keyword):
+    result_list = []
+    fin = codecs.open("word", "r", "utf-8")
+    search_dict = json.load(fin, encoding='utf-8')
+    fin.close()
     relate_dict = {}
     for word in search_dict:
         relate_dict[word] = edit_distance(keyword, word)
     #print relate_dict
-    top_list = sorted(relate_dict.iteritems(), key=lambda f:f[1])[:9]
-    top_list = [i for (i, j) in top_list]
-    return top_list
+    top_list = sorted(relate_dict.iteritems(), key=lambda f:f[1])[:6]
+    temp_list = []
+    for i in range(len(top_list)):
+        temp_list.append(top_list[i][0].encode('utf-8'))
+        if (i+1)%3 == 0:
+            result_list.append(temp_list)
+            temp_list = []
+    return result_list
