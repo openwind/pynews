@@ -3,7 +3,7 @@
 
 __author__ = 'Genial Wang'
 
-import sys, os,re
+import sys, os,re,urllib
 sys.path.append("../")
 from flask import Flask, request
 import logging; logging.basicConfig(level=logging.INFO)
@@ -16,6 +16,8 @@ app = Flask(__name__)
 
 ppath='../spider/data/sina/interest_news'
 corpus=cutWord(getFiles(ppath))
+que = ""
+sequence = ""
 def init_jinja2(**kw):
     options = dict(
             autoescape = kw.get('autoescape', False),
@@ -56,11 +58,37 @@ def get_list(path):
         index_list.append(value_list)
     return index_list
 
+def handle(search, seq):
+    arg = dict()
+    env = init_jinja2()
+    if search == "":
+        html = env.get_template('index.html').render().encode('utf-8')
+    else:
+        degree=sortResult(query(search,corpus,ppath))
+        filelist = [info[0] for info in degree]
+        argList = get_list(filelist)
+        if seq == "time":
+            sortByTime(argList)
+        elif seq == "hot":
+            sortByHot(argList)
+        arg['files'] = argList
+        arg['search'] = search
+        result_list = relate_search(search)
+        arg['rel'] = result_list
+        #渲染结果页面
+        html = env.get_template('news.html').render(arg).encode('utf-8')
+    return html
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     env = init_jinja2()
     html = env.get_template('index.html').render().encode('utf-8')
     return html
+
+@app.route('/news', methods=['GET'])
+def test():
+    que = request.args.get('search')
+    return handle(que, sequence)
 
 @app.route('/news', methods=['GET', 'POST'])
 def news():
@@ -70,26 +98,7 @@ def news():
         sequence = request.form['radio']
     except:
         sequence = ""
-    arg = dict()
-    env = init_jinja2()
-    if que == "":
-        html = env.get_template('index.html').render().encode('utf-8')
-    else:
-        degree=sortResult(query(que,corpus,ppath))
-        filelist = [info[0] for info in degree]
-        argList = get_list(filelist)
-        if sequence == "time":
-            sortByTime(argList)
-        elif sequence == "hot":
-            sortByHot(argList)
-        arg['files'] = argList
-        arg['search'] = que
-        #渲染结果页面
-        html = env.get_template('news.html').render(arg).encode('utf-8')
-    return html
-    
-def relative_compute(keyWord):
-    relate_search(corpus, keyWord)
+    return handle(que, sequence)
 
 if __name__ == '__main__':
     app.run()
